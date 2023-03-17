@@ -53,7 +53,7 @@ services:
       - --web.enable-remote-write-receiver
       - --enable-feature=exemplar-storage
     volumes:
-      - ./o11y-backend/prometheus.yaml:/etc/ecs_sd_targets.yaml
+      - ./o11y-backend/prometheus.yaml:/etc/prometheus.yaml
     ports:
       - "9090:9090"
     healthcheck:
