@@ -1,0 +1,40 @@
+extensions:
+  ecs_observer:
+    refresh_interval: 10s
+    cluster_name: 'demo'
+    cluster_region: 'us-east-1'
+    result_file: '/etc/ecs_sd_targets.yaml'
+    task_definitions:
+      #- arn_pattern: "^arn:aws:ecs:us-west-2:906383545488:task-definition/lorem-ipsum-task:[0-9]+$"
+      - arn_pattern: "^arn:aws:ecs:us-east-1:019551934733:task-definition/hellou:[0-9]+$"
+       metrics_ports: [8080]
+       metrics_path: /metrics
+receivers:
+  prometheus:
+    config:
+      scrape_configs:
+        - job_name: 'prometheus'
+          scrape_interval: 10s
+          file_sd_configs:
+            - files:
+                - '/etc/ecs_sd_targets.yaml'
+processors:
+  batch:
+  # resourcedetection:
+  #   detectors: [ecs]
+  #   override: false
+exporters:
+  prometheus:
+    endpoint: collector:6666
+    namespace: default
+  otlp:
+    endpoint: tempo:4317
+    tls:
+      insecure: true
+service:
+  extensions: [ecs_observer]
+  pipelines:
+    metrics:
+      receivers: [prometheus]
+      processors: [batch]
+      exporters: [prometheus]
