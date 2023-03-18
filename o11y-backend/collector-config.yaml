@@ -37,7 +37,7 @@ processors:
 
 exporters:
   prometheusremotewrite:
-    endpoint: "http://18.208.208.171:9090/api/v1/write"
+    endpoint: "http://172.31.11.46:9090/api/v1/write"
     namespace: default
 
 service:

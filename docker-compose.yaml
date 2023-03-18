@@ -7,8 +7,8 @@ services:
     container_name: collector
     hostname: collector
     environment:
-      - AWS_ACCESS_KEY_ID=
-      - AWS_SECRET_ACCESS_KEY=
+      - AWS_ACCESS_KEY_ID=AKIA5F6AT3FUYAWVJBEY
+      - AWS_SECRET_ACCESS_KEY=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
       - AWS_REGION=us-east-1
     depends_on:
       tempo:
@@ -54,6 +54,9 @@ services:
       - --enable-feature=exemplar-storage
     volumes:
       - ./o11y-backend/prometheus.yaml:/etc/prometheus.yaml
+      - type: bind
+        source: ./ecs_sd_targets.yaml
+        target: /etc/ecs_sd_targets.yaml
     ports:
       - "9090:9090"
     healthcheck:

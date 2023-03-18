@@ -6,4 +6,8 @@ scrape_configs:
   - job_name: 'collector'
     scrape_interval: 5s
     static_configs:
-      - targets: [ 'collector:6666' ]
+      - targets: [ 'collector:55680' ]
+  - job_name: "ecs-task"
+    file_sd_configs:
+      - files:
+          - '/etc/ecs_sd_targets.yaml' 

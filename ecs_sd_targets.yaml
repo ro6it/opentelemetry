@@ -1,1 +1,30 @@
-
+- targets:
+  - 172.31.48.173:8080
+  labels:
+    __meta_ecs_cluster_name: demo
+    __meta_ecs_container_name: hellou
+    __meta_ecs_health_status: UNKNOWN
+    __meta_ecs_service_name: hellou
+    __meta_ecs_source: arn:aws:ecs:us-east-1:906105182569:task/demo/42b432bc54d24dbe86a350c38e714bff
+    __meta_ecs_task_definition_family: hellou
+    __meta_ecs_task_definition_revision: "1"
+    __meta_ecs_task_group: service:hellou
+    __meta_ecs_task_launch_type: FARGATE
+    __meta_ecs_task_started_by: ecs-svc/4275797037486206427
+    __metrics_path__: /metrics
+    prometheus_job: task_def_1
+- targets:
+  - 172.31.24.201:8080
+  labels:
+    __meta_ecs_cluster_name: demo
+    __meta_ecs_container_name: hellou
+    __meta_ecs_health_status: UNKNOWN
+    __meta_ecs_service_name: hellou
+    __meta_ecs_source: arn:aws:ecs:us-east-1:906105182569:task/demo/f99551a195d64e6cbdf11464270a08a2
+    __meta_ecs_task_definition_family: hellou
+    __meta_ecs_task_definition_revision: "1"
+    __meta_ecs_task_group: service:hellou
+    __meta_ecs_task_launch_type: FARGATE
+    __meta_ecs_task_started_by: ecs-svc/4275797037486206427
+    __metrics_path__: /metrics
+    prometheus_job: task_def_1
