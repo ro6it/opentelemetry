@@ -6,10 +6,10 @@ services:
     image: public.ecr.aws/aws-observability/aws-otel-collector:latest
     container_name: collector
     hostname: collector
-    environment:
-      - AWS_ACCESS_KEY_ID=<Update the Keys>
-      - AWS_SECRET_ACCESS_KEY=<Update the Keys>
-      - AWS_REGION=us-east-1
+      #    environment:
+      #      - AWS_ACCESS_KEY_ID=<Update the Keys>
+      #      - AWS_SECRET_ACCESS_KEY=<Update the Keys>
+      #      - AWS_REGION=us-east-1
     depends_on:
       tempo:
         condition: service_healthy
@@ -24,7 +24,7 @@ services:
         source: ./ecs_sd_targets.yaml
         target: /etc/ecs_sd_targets.yaml
     ports:
-      - "8889:8888"
+      - "8888:8888"
       - "55680:55680"
 
   tempo:
