@@ -1,16 +1,26 @@
 # opentelemetry
-Collecting traces and metrices from the java app using telemetry agent auto-instrumentation
 
-This is the solution for collecting the prometheus instrumented metrics from an application running on ECS Fargat.
+This is the solution for collecting the prometheus instrumented metrics from an application which is running on AWS ECS Fargate.
 
-The approach is like, we are using ecsobserver extension in aws-otel collector container image configuration.
+## Problem statement:
+  The challenge we faced in setting up monitoring for ECS fargate was to get the list of ECS tasks dynamically so that we can monitor them.
+  
+## Solution:
 
-The collector has three sections:
+In this solution, we have leveraged the AWS opentelemetry collector ADOT Collector to collect the metrics and manage the service discovery of the fargate tasks (targets).
 
-1. Receiver - prometheus receiver
+The approach is like, we are using ecsobserver extension in aws-otel collector container configuration and managing the service discovery using prometheus file based service discovery file_sd_configs
+
+The ecsobserver uses the ECS/EC2 API to discover prometheus scrape targets from all running tasks and filter them based on service names, task definitions and container labels.
+
+The collector configuration has three sections:
+
+1. Receiver - using prometheus receiver
 2. Processors - batch
 3. Exporter - prometheusremotewrite
 4. Extension - ecsobserver
+
+In our case - the sample application is running on fargate task which is exposing the metrics on port 8080/metrics and we are running prometheus, ADOT collector and grafana on a EC2 instance as containers in the same VPC. In order to allow API calls to ECS we have attached the role having permissions to ec2 instance.
 
 
 References:
