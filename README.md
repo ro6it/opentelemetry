@@ -7,9 +7,9 @@ This is the solution for collecting the prometheus instrumented metrics from an 
   
 ## Solution:
 
-In this solution, we have leveraged the AWS opentelemetry collector ADOT Collector to collect the metrics and manage the service discovery of the fargate tasks (targets).
+In this solution, we are leveraging the AWS opentelemetry collector (ADOT Collector) to collect the metrics and manage the service discovery of the fargate tasks (targets).
 
-The approach is like, we are using ecsobserver extension in aws-otel collector container configuration and managing the service discovery using prometheus file based service discovery file_sd_configs
+The approach is, we are using ecsobserver extension in aws-otel collector configuration and managing the service discovery using prometheus file based service discovery file_sd_configs
 
 The ecsobserver uses the ECS/EC2 API to discover prometheus scrape targets from all running tasks and filter them based on service names, task definitions and container labels.
 
