@@ -11,6 +11,8 @@ scrape_configs:
     file_sd_configs:
       - files:
           - '/etc/ecs_sd_targets.yaml'
+        refresh_interval: 1m
+
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
