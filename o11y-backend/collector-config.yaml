@@ -10,7 +10,7 @@ extensions:
       - job_name: 'task_def_1'
         metrics_path: '/metrics'
         metrics_ports:
-          - 8080
+          - 9404
         arn_pattern: '.*:task-definition/hellou:[0-9]+'
 
 receivers:
