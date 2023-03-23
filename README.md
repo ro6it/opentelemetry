@@ -30,6 +30,7 @@ References:
 - https://aws-observability.github.io/aws-otel-collector/
 - Sample app:
   https://github.com/open-o11y/prometheus-sample-app
+  https://github.com/ro6it/sample-java-app.git
 - https://aws-otel.github.io/docs/setup/ec2
 - setup: https://github.com/build-on-aws/instrumenting-java-apps-using-opentelemetry/tree/build-on-aws-tutorial
 - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContainerInsights-Prometheus-Setup-configure-ECS.html
